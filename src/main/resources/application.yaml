@@ -1,3 +1,13 @@
 spring:
   application:
     name: user-management-api
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/meubanco
+    username: admin
+    password: admin123
+ 
