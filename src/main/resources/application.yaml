@@ -10,4 +10,5 @@ spring:
     url: jdbc:postgresql://localhost:5432/meubanco
     username: admin
     password: admin123
- 
+  jwt:
+    secret: ${JWT_SECRET}
