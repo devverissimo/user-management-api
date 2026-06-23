@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.List;
 
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
@@ -22,6 +23,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     public JwtAuthenticationFilter(JwtProvider jwtProvider, UsuarioDetailsService usuarioDetailsService) {
         this.jwtProvider = jwtProvider;
         this.usuarioDetailsService = usuarioDetailsService;
+    }
+
+    private static final List<String> ROTAS_PUBLICAS = List.of("/auth/register", "/auth/login");
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String path = request.getServletPath();
+        return ROTAS_PUBLICAS.stream().anyMatch(path::startsWith);
     }
 
     @Override

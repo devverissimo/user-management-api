@@ -10,5 +10,10 @@ spring:
     url: jdbc:postgresql://localhost:5432/meubanco
     username: admin
     password: admin123
-  jwt:
-    secret: ${JWT_SECRET:devverissimo0141201204ver1221m01}
+
+jwt:
+  secret: ${JWT_SECRET:devverissimo0141201204ver1221m01}
+
+logging:
+  level:
+    org.springframework.security: DEBUG
